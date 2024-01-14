@@ -3,6 +3,9 @@
 ## Description
 This application tracks the amount and type of bagged coffee beans remaining as they are sold.  
 
+### Component Tree:
+![image](./src/img/componentTree.jpeg)
+
 ###  Requirements:
   * Git
   * Node Package Manager (npm)
