@@ -4,16 +4,24 @@ import Coffee from "./Coffee";
 function CoffeeList(){
     return (
         <React.Fragment>
-            {/* {mainCoffeeList.map((coffee, index) =>
-            <Coffee name={coffee.name}
+            {props.coffeeList.map((coffee) =>
+            <Coffee
+            whenCoffeeClicked = { props.onCoffeeSelection }
+            name={coffee.name}
             origin={coffee.origin}
             price={coffee.price}
             roast={coffee.roast}
-            key={index}/>
-        )} */}
+            id={coffee.id}
+            key={coffee.id}/>
+        )}
         </React.Fragment>
         
     );
+}
+
+CoffeeList.propTypes = {
+    coffeeList: PropTypes.array,
+    onCoffeeSelection: PropTypes.func
 }
 
 export default CoffeeList;

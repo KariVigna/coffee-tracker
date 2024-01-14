@@ -1,9 +1,12 @@
 import React from "react";
+import ReusableForm from "./ReusableForm"
 
 function NewCoffeeForm(props){
     return (
         <React.Fragment>
-        <h3>Form placeholder.</h3>
+        <ReusableForm
+            formSubmissionHandler={handleNewCoffeeFormSubmission}
+            buttonText="Add New Coffee" />
         </React.Fragment>
     );
 }
