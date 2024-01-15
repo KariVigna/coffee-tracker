@@ -1,7 +1,8 @@
 import React from 'react';
-import NewTicketForm from './NewCoffeeForm';
+import NewCoffeeForm from './NewCoffeeForm';
 import CoffeeList from './CoffeeList';
 import EditCoffeeForm from './EditCoffeeForm';
+import CoffeeDetail from './CoffeeDetail';
 
 class CoffeeControl extends React.Component {
 
@@ -31,7 +32,7 @@ class CoffeeControl extends React.Component {
 
     handleChangingSelectedCoffee = (id) => {
         const selectedCoffee = this.state.mainCoffeeList.filter(coffee => coffee.id === id)[0];
-        this.setState({selectedTicket: selectedTicket});
+        this.setState({selectedCoffee: selectedCoffee});
     }
 
     handleDeletingCoffee = (id) => {
