@@ -29,7 +29,6 @@ class CoffeeControl extends React.Component {
         };
     }
 
-
     handleChangingSelectedCoffee = (id) => {
         const selectedCoffee = this.state.mainCoffeeList.filter(coffee => coffee.id === id)[0];
         this.setState({selectedCoffee: selectedCoffee});
@@ -68,6 +67,31 @@ class CoffeeControl extends React.Component {
         });
     }
 
+    handleAddingNewCoffeeToList = (newCoffee) => {
+        const newMainCoffeeList = this.state.mainCoffeeList.concat(newCoffee);
+        this.setState({
+            mainCoffeeList: newMainCoffeeList,
+            formVisibleOnPage: false
+        });
+    }
+
+    handleUpdateQty = (coffeeToUpdate, delta) => {
+        const updatedQty = coffeeToUpdate.qty + delta;
+        
+        if (updatedQty >= 1 && updatedQty <= 100) {
+            const updatedCoffee = { ...coffeeToUpdate, qty: updatedQty };
+            
+            const newMainCoffeeList = this.state.mainCoffeeList
+                .filter(coffee => coffee.id !== coffeeToUpdate.id)
+                .concat(updatedCoffee);
+        
+            this.setState({
+                mainCoffeeList: newMainCoffeeList,
+                selectedCoffee: updatedCoffee
+            });
+        }
+    }
+
 
     render() {
         let currentlyVisibleState = null;
@@ -82,25 +106,29 @@ class CoffeeControl extends React.Component {
             currentlyVisibleState = <CoffeeDetail
                             coffee = {this.state.selectedCoffee}
                             onClickingDelete = {this.handleDeletingCoffee}
-                            onClickingEdit = {this.handleEditClick} />;
+                            onClickingEdit = {this.handleEditClick}
+                            onClickingUpdateQty = {this.handleUpdateQty} />;
             buttonText = "Return to Coffee List";
         } else if (this.state.formVisibleOnPage) {
-            currentlyVisibleState = <NewCoffeeForm />;
+            currentlyVisibleState = <NewCoffeeForm 
+                            onNewCoffeeCreation={this.handleAddingNewCoffeeToList}/>;
             buttonText = "Return to Coffee List";
         } else {
-            currentlyVisibleState = <CoffeeList />
+            currentlyVisibleState = <CoffeeList 
+                            coffeeList={this.state.mainCoffeeList}
+                            onCoffeeSelection={this.handleChangingSelectedCoffee} />
             buttonText = "Add Coffee";        
         }
         
         return(
             <React.Fragment>
-                {currentlyVisibleState}
-                <button onClick={this.handleClick}>{buttonText}</button>
-            </React.Fragment>
+                {currentlyVisibleState}<br/>
+                <button onClick={this.handleClick}>{buttonText}</button>            </React.Fragment>
         )
 
     }
 }
+
 
 
 export default CoffeeControl;

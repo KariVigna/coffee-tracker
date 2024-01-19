@@ -11,6 +11,8 @@ function NewCoffeeForm(props){
             name: event.target.name.value,
             origin: event.target.origin.value,
             roast: event.target.roast.value,
+            price: parseFloat(event.target.price.value),
+            qty: parseInt(event.target.qty.value),
             id: v4()
         })
     }

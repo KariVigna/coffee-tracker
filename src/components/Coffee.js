@@ -18,7 +18,8 @@ Coffee.propTypes = {
     price: PropTypes.number.isRequired,
     roast: PropTypes.string,
     id: PropTypes.string,
-    whenCofeeClicked: PropTypes.func
+    qty: PropTypes.number,
+    whenCoffeeClicked: PropTypes.func
 };
 
 export default Coffee;
