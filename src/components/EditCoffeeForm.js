@@ -6,7 +6,11 @@ function EditCoffeeForm (props) {
 
     function handleEditCoffeeFormSubmission(event) {
         event.preventDefault();
-        props.onEditCoffee({name: event.target.name.value, origin: event.target.origin.value, roast: event.target.roast.value})
+        props.onEditCoffee({
+                        name: event.target.name.value,
+                        origin: event.target.origin.value,
+                        roast: event.target.roast.value
+        })
     }
 
     return (

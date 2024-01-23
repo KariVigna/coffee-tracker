@@ -1,4 +1,4 @@
-# Epicodus Help Queue
+# Coffee Tracker
 
 ## Description
 This application tracks the amount and type of bagged coffee beans remaining as they are sold.  

@@ -43,22 +43,12 @@ class CoffeeControl extends React.Component {
     }
 
     handleEditClick = () => {
-        if (this.state.selectedCoffee != null) {
-            this.setState({
-                formVisibleOnPage: false,
-                selectedCoffee: null,
-                editing: false
-            })
-        } else {
-        this.setState(prevState => ({
-            formVisibleOnPage: !prevState.formVisibleOnPage
-        }));
-        }
+            this.setState({editing:true});
     }
 
     handleEditingCoffeeInList = (coffeeToEdit) => {
         const editedMainCoffeeList = this.state.mainCoffeeList
-            .filter(coffee => coffee.id !== this.state.selectedCoffee.is)
+            .filter(coffee => coffee.id !== this.state.selectedCoffee.id)
             .concat(coffeeToEdit);
         this.setState({
             mainCoffeeList: editedMainCoffeeList,
