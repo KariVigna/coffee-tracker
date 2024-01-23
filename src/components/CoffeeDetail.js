@@ -15,6 +15,8 @@ function CoffeeDetail(props){
     return (
         <React.Fragment>
         <h1>{coffee.name}, {coffee.origin}: {coffee.price}, remaining: {coffee.qty}</h1>
+        <h1>Coffee remaining: {(coffee.qty === 0) ? "Sold out!!!" : coffee.qty}</h1>
+
         <button onClick={()=> onClickingEdit(coffee.id) }>Update</button> 
         <button onClick={()=> onClickingDelete(coffee.id) }>Delete Coffee</button>
         <button onClick={handleQtyIncrease}>Add more</button>

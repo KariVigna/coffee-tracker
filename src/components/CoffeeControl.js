@@ -67,14 +67,16 @@ class CoffeeControl extends React.Component {
 
     handleUpdateQty = (coffeeToUpdate, delta) => {
         const updatedQty = coffeeToUpdate.qty + delta;
-        const updatedCoffee = { ...coffeeToUpdate, qty: updatedQty };
-        const newMainCoffeeList = this.state.mainCoffeeList
+        if (updatedQty >= 0) {
+            const updatedCoffee = { ...coffeeToUpdate, qty: updatedQty };
+            const newMainCoffeeList = this.state.mainCoffeeList
                 .filter(coffee => coffee.id !== coffeeToUpdate.id)
                 .concat(updatedCoffee);
-        this.setState({
+            this.setState({
                 mainCoffeeList: newMainCoffeeList,
                 selectedCoffee: updatedCoffee
-        });
+            });
+        }
     }
 
     render() {

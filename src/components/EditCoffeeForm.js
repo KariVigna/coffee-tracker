@@ -2,6 +2,7 @@ import React from "react";
 import ReusableForm from "./ReusableForm";
 import PropTypes from "prop-types";
 
+
 function EditCoffeeForm (props) {
 
     function handleEditCoffeeFormSubmission(event) {
@@ -9,7 +10,10 @@ function EditCoffeeForm (props) {
         props.onEditCoffee({
                         name: event.target.name.value,
                         origin: event.target.origin.value,
-                        roast: event.target.roast.value
+                        roast: event.target.roast.value,
+                        price: parseFloat(event.target.price.value),
+                        qty: parseInt(event.target.qty.value),
+                        id: props.coffee.id
         })
     }
 
